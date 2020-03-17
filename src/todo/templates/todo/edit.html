@@ -1,0 +1,11 @@
+{% extends './base.html' %}
+
+{% block content %}
+	<h1> Igor Todo List </h1>
+	<form class="insert" method="POST">
+		{% csrf_token %}
+		<p>Edit <strong>{{task}}</strong></p>
+		{{form.as_p}}
+		<button type="submit">Update task</button>
+	</form>
+{% endblock %}

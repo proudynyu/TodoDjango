@@ -10,17 +10,18 @@
 
 	<ul>
 	{% for todo in todo %}
-		<li class="todo-item">{{todo.title}}</li>
-		
-		<form method="POST" action="{% url 'delete' pk=todo.id %}">
-			{% csrf_token %}
-			<input type="submit" class="delete" value="Delete">
-		</form>
+		<li class="todo-item">{{todo.title}}	
+			
+			<form method="POST" action="{% url 'delete' pk=todo.id %}">
+				{% csrf_token %}
+				<input type="submit" class="delete" value="Delete">
+			</form>
 
-		<form method="POST" action="{% url 'edit' pk=todo.id %}">
-			{% csrf_token %}
-			<input type="submit" class="edit" value="edit">
-		</form>
+			<form method="GET" action="{% url 'edit' pk=todo.id %}">
+				{% csrf_token %}
+				<input type="submit" class="edit" value="edit">
+			</form>
+		</li>
 	{% endfor %}
 	</ul>
 {% endblock %}

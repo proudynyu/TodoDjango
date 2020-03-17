@@ -23,4 +23,17 @@ def delete(request, pk):
 	return redirect('/')
 	
 def edit(request, pk):
-	pass
+	if request.method == "POST":
+		form = TodoForm(request.POST)
+		if form.is_valid():
+			taskUp = form.cleaned_data.get('title')
+			task = Todo.objects.filter(id=pk).update(title=taskUp)
+			return redirect('/')
+	else:
+		form = TodoForm
+		task = Todo.objects.get(id=pk)
+		context = {
+			'form': form,
+			'task': task
+		}
+		return render(request, 'todo/edit.html', context)
