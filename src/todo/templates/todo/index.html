@@ -2,7 +2,7 @@
 
 {% block content %}
 	<h1 class="title"> Igor Todo List </h1>
-	<form class="insert" method="POST">
+	<form method="POST" class="top-task">
 		{% csrf_token %}
 		{{form.as_p}}
 		<button class="btn" type="submit">Create Task</button>
